@@ -9,7 +9,8 @@
       }
     },
     {
-      "src": "frontend/dist/**/*"
+      "src": "frontend/dist/**/*",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
