@@ -1,5 +1,4 @@
-import { FC, useEffect } from 'react';
-import { toast } from 'react-hot-toast';
+import { FC } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
 export const ProtectedHomePage: FC = () => {
