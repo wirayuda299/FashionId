@@ -9,8 +9,7 @@
       }
     },
     {
-      "src": "frontend/dist/**/*",
-      "dest": "/"
+      "src": "frontend/dist/**/*"
     }
   ],
   "routes": [
