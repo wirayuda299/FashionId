@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend/tsconfig.json",
+      "use": "@vercel/node",
+      "config": {
+        "command": "tsc && cp -r frontend/src frontend/dist && cp frontend/public/* frontend/dist"
+      }
+    },
+    {
+      "src": "frontend/dist/**/*",
+      "dest": "/"
+    }
+  ],
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/.*",
+      "dest": "frontend/dist/index.js"
+    }
+  ]
+}
