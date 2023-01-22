@@ -40,7 +40,7 @@ export const TopSelling: FC = () => {
           }
         </div>
         <div className='w-full h-full p-5'>
-          <div className='columns-1 md:columns-3 lg:columns-4'>
+          <div className='mx-auto columns-1 md:columns-3 lg:columns-4'>
             {isLoading ? (
               <p>Loading...</p>
             ) : (
