@@ -15,8 +15,8 @@ interface Props {
   isTopSell: boolean;
 }
 
-const Card: FC<Props> = props => {
-  const { image, title, price, className, id, gender, category, model, isTopSell, } = props;
+const Card: FC<Props> = ({ image, title, price, className, id, gender, category, model, isTopSell}) => {
+
   return (
     <motion.div
       initial={{ opacity: 0, filter: 'blur(5px)' }}
@@ -30,10 +30,14 @@ const Card: FC<Props> = props => {
         <div className='w-full h-min aspect-square relative overflow-hidden'>
           <img
             width='500'
-            className='object-fill object-center w-full h-full'
+            className='object-cover'
             height='500'
-            onMouseEnter={e => model ? (e.currentTarget.src = urlFor(image[1]).format('jpg').toString()) : (e.currentTarget.src = urlFor(image[0]).format('jpg').toString())}
-            onMouseLeave={e => model ? (e.currentTarget.src = urlFor(image[0]).format('jpg').toString()) : (e.currentTarget.src = urlFor(image[1]).format('jpg').toString())}
+            onMouseEnter={e => model ? (
+              e.currentTarget.src = urlFor(image[1]).format('jpg').toString())
+              : (e.currentTarget.src = urlFor(image[0]).format('jpg').toString())}
+            onMouseLeave={e => model ? (
+              e.currentTarget.src = urlFor(image[0]).format('jpg').toString())
+              : (e.currentTarget.src = urlFor(image[1]).format('jpg').toString())}
             src={model ? urlFor(image[0]).format('jpg').toString() : urlFor(image[1]).format('jpg').toString()}
             alt={title}
           />

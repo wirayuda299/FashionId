@@ -21,16 +21,17 @@ const Detail: FC = () => {
   const [, setClicked] = useState<boolean>(false);
   const [selected, setSelected] = useState<string>('')
   const { state: { cartItems, selectedSize }, dispatch } = useStateContext();
+  console.log(selectedSize);
 
   const { data, isError, isLoading } = useQuery(['product detail', id], async () => {
     const response = await client.fetch('*[_type == "product"]') as Products[];
     setRecommendedProduct(response.filter(item => item._id !== id && item.gender === gender));
     const filtered = response.filter(item => item._id === id);
-    setSelected(filtered.map(item => item.size[0]).join(''))
+    setSelected(filtered.map(item => item.size[0]).toString())
     return filtered;
   });
-  
-  const addToCart = (product: Products, selectedSize: string = selected, quantity: number = 1) => {
+
+  const addToCart = (product: Products) => {
     setClicked(true);
     const checkDuplicates = cartItems.find((item: Products) => item?._id === product?._id);
     if (checkDuplicates) {
@@ -44,7 +45,7 @@ const Detail: FC = () => {
         type: 'ADD-TO-CART',
         payload: {
           product,
-          selectedSize,
+          selectedSize: selected,
           quantity: 1
         }
       });
@@ -75,7 +76,7 @@ const Detail: FC = () => {
       <p className='text-center w-full text-black'>Loading....</p>
     );
   }
- 
+
   return (
     <div>
       {data?.map(product => (
@@ -99,7 +100,12 @@ const Detail: FC = () => {
                 emulateTouch>
                 {product?.image?.map(image => (
                   <div className='h-full' key={image.toString()}>
-                    <img src={urlFor(image).toString()} alt={product?.title} className='object-fill rounded w-full h-full aspect-square' />
+                    <img
+                      width={300}
+                      height={300}
+                      src={urlFor(image).fit('max').format('jpg').maxWidth(350).maxHeight(350).toString()}
+                      alt={product?.title}
+                       />
                   </div>
                 ))}
               </Carousel>
@@ -115,9 +121,11 @@ const Detail: FC = () => {
                   <div className='flex ml-6 items-center'>
                     <span className='mr-3'>Size</span>
                     <div className='relative'>
-                      <select className='rounded border appearance-none border-gray-300 py-2 focus:outline-none  text-base pl-3 pr-10' onChange={e => dispatch({type: 'SELECT-SIZE', payload: {
-                        size: e.target.value
-                      }})}>
+                      <select className='rounded border appearance-none border-gray-300 py-2 focus:outline-none  text-base pl-3 pr-10' onChange={e => dispatch({
+                        type: 'SELECT-SIZE', payload: {
+                          size: e.target.value
+                        }
+                      })}>
                         {product?.size?.map((size: string) => (
                           <option key={size}>{size}</option>
                         ))}
@@ -130,9 +138,7 @@ const Detail: FC = () => {
                   <span className='title-font font-medium md:font-bold text-2xl text-gray-900'>${product?.price}</span>
                   <button
                     className='flex space-x-3 gap-2 items-center ml-auto text-white bg-black border-0 py-2 px-6 focus:outline-none rounded-md'
-                    onClick={() => {
-                      addToCart(product, selectedSize);
-                    }}
+                    onClick={() => addToCart(product)}
                     title={addedToCart ? 'Increase quantity' : 'Add to Cart'}>
                     {addedToCart ? (
                       'Added'

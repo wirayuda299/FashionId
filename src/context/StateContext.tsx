@@ -33,7 +33,10 @@ const States: InitialState = {
   selectedSize: ''
 };
 
-const contextIntial: IProps = { state: States, dispatch: () => null }
+const contextIntial: IProps = {
+  state: States,
+  dispatch: () => null
+}
 const StateContext = createContext(contextIntial);
 
 export const StateContextProvider: FC<IContextProps> = ({ children }) => {
