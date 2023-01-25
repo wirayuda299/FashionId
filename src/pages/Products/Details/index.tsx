@@ -121,11 +121,7 @@ const Detail: FC = () => {
                   <div className='flex ml-6 items-center'>
                     <span className='mr-3'>Size</span>
                     <div className='relative'>
-                      <select className='rounded border appearance-none border-gray-300 py-2 focus:outline-none  text-base pl-3 pr-10' onChange={e => dispatch({
-                        type: 'SELECT-SIZE', payload: {
-                          size: e.target.value
-                        }
-                      })}>
+                      <select className='rounded border appearance-none border-gray-300 py-2 focus:outline-none  text-base pl-3 pr-10' onChange={e => setSelected(e.target.value)}>
                         {product?.size?.map((size: string) => (
                           <option key={size}>{size}</option>
                         ))}
