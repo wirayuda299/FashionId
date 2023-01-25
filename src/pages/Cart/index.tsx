@@ -10,7 +10,7 @@ import { ProductCartDetail } from './Detail/ProductCartDetail';
 
 const Cart: FC = () => {
   const [total, setTotal] = useState<number>(0);
-  const { state: { cartItems } } = useStateContext();
+  const { state: { cartItems} } = useStateContext();
 
   const totalPrices = useMemo(() => {
     return cartItems.reduce((acc: number, curr: { price: number; quantity: number }) => acc + curr.price * curr.quantity, 0);
@@ -21,6 +21,8 @@ const Cart: FC = () => {
       setTotal(totalPrices);
     }
   }, [totalPrices]);
+
+
 
   return (
     <div className='w-full h-full'>

@@ -13,19 +13,13 @@ const Buttons: FC<Props> = ({ product, id }) => {
   const [addedToWishList, setAddedToWishList] = useState(false);
   const { state: { wishLists }, dispatch } = useStateContext();
 
-  const addToWishList = (product: Products) => {
-    const checkDuplicates = wishLists.find(
-      (item: Products) => item._id === product._id
-    );
+   const addToWishList = (product: Products) => {
+    const checkDuplicates = wishLists.find((item: Products) => item._id === product._id);
     if (checkDuplicates) {
-      return toast.error(
-        'This item already in your wishlist'
-      );
+      return toast.error('This item already in your wishlist');
     }
 
-    dispatch({
-      type: 'ADD-TO-WISHLIST', payload: { product }
-    });
+    dispatch({type: 'ADD-TO-WISHLIST', payload: { product }});
     toast.success('This item successfully added to wishlist');
   };
 
@@ -45,6 +39,7 @@ const Buttons: FC<Props> = ({ product, id }) => {
       setAddedToWishList(false);
     }
   }, [wishLists]);
+
   return (
     <div>
       {addedToWishList ? (
