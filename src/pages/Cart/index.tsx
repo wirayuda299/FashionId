@@ -7,10 +7,11 @@ import { useStateContext } from '../../context/StateContext';
 import { Products } from '../../types/Product';
 import { CheckOut } from './checkout/CheckOut';
 import { ProductCartDetail } from './Detail/ProductCartDetail';
+import { toast } from 'react-hot-toast';
 
 const Cart: FC = () => {
   const [total, setTotal] = useState<number>(0);
-  const { state: { cartItems} } = useStateContext();
+  const { state: { cartItems }, dispatch } = useStateContext();
 
   const totalPrices = useMemo(() => {
     return cartItems.reduce((acc: number, curr: { price: number; quantity: number }) => acc + curr.price * curr.quantity, 0);
@@ -22,13 +23,31 @@ const Cart: FC = () => {
     }
   }, [totalPrices]);
 
-
+  const removeAllCartItems = () => {
+    const ConfirmUser = confirm('Are you sure want to delete all item?')
+    if (ConfirmUser) {
+      dispatch({ type: 'REMOVE-ALL-ITEM', payload: { product: [] } })
+      toast.success('All of your cart item is successfully removed')
+    }
+    return
+  }
 
   return (
     <div className='w-full h-full'>
-      <h1 className='text-2xl font-bold text-center py-3'>
-        Your Cart Items
-      </h1>
+      <div className='flex w-full justify-center px-3'>
+        <h1 className='text-2xl font-bold text-center py-3 flex-1'>
+          Your Cart Items
+        </h1>
+        <button
+          name='Delete all'
+          title='delete all'
+          className={`text-sm ${cartItems.length < 1 ? 'hidden' : ''}`}
+          onClick={removeAllCartItems}
+        >
+          Delete all
+        </button>
+      </div>
+
       <div className='w-full h-full flex flex-col justify-center items-center md:gap-x-3'>
         {cartItems.length === 0 ? (
           <EmptyCart />

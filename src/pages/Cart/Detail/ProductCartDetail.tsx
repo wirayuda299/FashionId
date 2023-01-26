@@ -30,12 +30,16 @@ export const ProductCartDetail: FC<Props> = ({ item }) => {
     });
   };
   const removeItem = (product: Products) => {
-    return dispatch({
-      type: 'REMOVE-FROM-CART',
-      payload: {
-        _id: product._id
-      }
-    });
+    const confirmDeleteItem = confirm(`Are you sure want to delete ${product.title} from your cart?`)
+    if (confirmDeleteItem) {
+       dispatch({
+        type: 'REMOVE-FROM-CART',
+        payload: {
+          _id: product._id
+        }
+      })
+      toast.success(`${product.title} has been removed`)
+    }
   };
   const addToWishList = (product: Products) => {
     const checkDuplicates = wishLists.find((item: Products) => item._id === product._id);
@@ -44,8 +48,7 @@ export const ProductCartDetail: FC<Props> = ({ item }) => {
     }
 
     dispatch({ type: 'ADD-TO-WISHLIST', payload: { product } });
-    toast.success('This item successfully added to wishlist');
-  };
+    toast.success('This item successfully added to wishlist');};
   const deleteWishListItem = (product: Products) => {
     dispatch({
       type: 'REMOVE-FROM-WISHLIST', payload: { product }
@@ -63,7 +66,7 @@ export const ProductCartDetail: FC<Props> = ({ item }) => {
       setAddedToWishList(false);
     }
   }, [wishLists]);
-  
+
   return (
     <section className='w-full md:px-5'>
       <div className='pt-3'>
@@ -80,13 +83,13 @@ export const ProductCartDetail: FC<Props> = ({ item }) => {
         </div>
         <div className='flex items-center space-x-2 gap-2 w-full'>
           <button title='remove item' onClick={() => removeItem(item)}>
-            <BsTrash className='text-2xl'/>
+            <BsTrash className='text-2xl' />
           </button>
           <button >
             {addedToWishList ? (
               <AiFillHeart size={28} color='red' title='remove from wish list' onClick={() => deleteWishListItem(item)} />
             ) : (
-              <AiOutlineHeart title='Add to wish list' size={28}  onClick={() => addToWishList(item)} />
+              <AiOutlineHeart title='Add to wish list' size={28} onClick={() => addToWishList(item)} />
             )}
           </button>
         </div>

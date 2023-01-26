@@ -28,8 +28,12 @@ interface SelecSizePayload {
   size: string
 }
 interface IQuery {
-  query:string 
+  query: string
 }
+interface RemoveCartItem {
+  product: Products[] | []
+}
+
 
 type AddToCartAction = Action<'ADD-TO-CART', CartPayload>;
 type SetUserActionAction = Action<'SET-USER', SetUserPayload>;
@@ -41,8 +45,9 @@ type RemoveFromWishlistAction = Action<'REMOVE-FROM-WISHLIST', WishlistPayload>
 type SelectCategoriesAction = Action<'SELECT-CATEGORY', SelectCategory>
 type SelectSizeAction = Action<'SELECT-SIZE', SelecSizePayload>
 type SetQueryAction = Action<'SET-QUERY', IQuery>
+type RemoveCartItemAction = Action<'REMOVE-ALL-ITEM', RemoveCartItem>
 
-export type IActionsType = AddToCartAction | SetUserActionAction | IncreaseQuantityAction | DereaseQuantityAction | RemoveFromCartAction | AddToWishListAction | RemoveFromWishlistAction | SelectCategoriesAction | SelectSizeAction | SetQueryAction;
+export type IActionsType = AddToCartAction | SetUserActionAction | IncreaseQuantityAction | DereaseQuantityAction | RemoveFromCartAction | AddToWishListAction | RemoveFromWishlistAction | SelectCategoriesAction | SelectSizeAction | SetQueryAction | RemoveCartItemAction;
 
 export default function itemReducer(state: InitialState, action: IActionsType) {
   switch (action.type) {
@@ -114,12 +119,16 @@ export default function itemReducer(state: InitialState, action: IActionsType) {
         ...state,
         selectedSize: action.payload.size
       }
-      case 'SET-QUERY': 
+    case 'SET-QUERY':
       return {
-        ...state, 
+        ...state,
         query: action.payload.query
       }
-
+    case 'REMOVE-ALL-ITEM':
+      return {
+        ...state, 
+        cartItems: []
+      }
     default:
       return state;
   }
