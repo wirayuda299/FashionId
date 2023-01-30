@@ -18,9 +18,9 @@ const errMessages: string[] = [
 
 const Signup: FC = () => {
   const navigate = useNavigate();
-  const {dispatch} = useStateContext()
+  const { dispatch } = useStateContext()
   const [processing, setProcessing] = useState(false);
-  
+
   const { register, handleSubmit, formState: { errors } } = useForm<FormInput>({
     defaultValues: {
       email: 'YourEmail@example.com',
@@ -47,12 +47,13 @@ const Signup: FC = () => {
                 emailVerified: user?.user?.emailVerified
               }
             }
-          })  
+          })
         });
-      setProcessing(false);
       return signUpUser;
     } catch (error: any) {
       toast.error(error.message);
+    } finally {
+      setProcessing(false)
     }
   };
 
@@ -61,7 +62,7 @@ const Signup: FC = () => {
       <div className='w-full h-screen flex justify-center items-center flex-col'>
         <div
           className=' absolute top-0 left-0 w-full h-full z-[9]'
-          style={{backgroundColor: 'rgba(0, 0, 0, 0.7)'}}></div>
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}></div>
         <video
           autoPlay
           muted
