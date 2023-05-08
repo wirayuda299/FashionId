@@ -7,14 +7,9 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormInput } from '../../types/formInput';
 import intro from '../../assets/video/intro.mp4';
 import { useStateContext } from '../../context/StateContext';
+import { errMessages } from '../../data/errorMessages';
 
-const errMessages: string[] = [
-  'Contains at least one uppercase letter',
-  'Contains at least one special character among !@#$%^&*',
-  'Contains at least one number',
-  'Contains at least one lowercase letter',
-  'Has a minimum length of 8 characters',
-];
+
 
 const Login: FC = () => {
   const navigate = useNavigate();

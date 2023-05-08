@@ -1,7 +1,7 @@
 import { useEffect, useState, FC } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Card from '../Card/Card';
+import Card from '../Card';
 import { client } from '../../../config/client';
 import { useQuery } from 'react-query';
 import { Products } from '../../types/Product';
@@ -44,33 +44,33 @@ export const LatestProduct: FC = () => {
         {
           isLoading ? (
             <p className='text-center'>Loading....</p>
-          ): (
+          ) : (
             <Carousel
-            autoPlay
-            infiniteLoop
-            showStatus={false}
-            showThumbs={false}
-            centerMode={windowWidth >= 600}
-            interval={5000}
-            swipeable={false}
-            centerSlidePercentage={windowWidth >= 768 ? 55 : 100}
-            showIndicators={false}
-            showArrows={false}>
-            {data?.map(product => (
-              <div key={product?._id} className='mx-5 md:mx-3'>
-                <Card
-                  image={product?.preview}
-                  title={product?.title}
-                  price={product?.price}
-                  id={product?._id}
-                  model={true}
-                  category={product.category}
-                  gender={product.gender}
-                  isTopSell={product.tags.includes('top selling')}
-                />
-              </div>
-            ))}
-          </Carousel>
+              autoPlay
+              infiniteLoop
+              showStatus={false}
+              showThumbs={false}
+              centerMode={windowWidth >= 600}
+              interval={5000}
+              swipeable={false}
+              centerSlidePercentage={windowWidth >= 768 ? 55 : 100}
+              showIndicators={false}
+              showArrows={false}>
+              {data?.map(product => (
+                <div key={product?._id} className='mx-5 md:mx-3'>
+                  <Card
+                    image={product?.preview}
+                    title={product?.title}
+                    price={product?.price}
+                    id={product?._id}
+                    model={true}
+                    category={product.category}
+                    gender={product.gender}
+                    isTopSell={product.tags.includes('top selling')}
+                  />
+                </div>
+              ))}
+            </Carousel>
           )
         }
       </div>

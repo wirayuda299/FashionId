@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, FormEvent, useRef, useState } from 'react';
+import { type ChangeEvent, type FC, type FormEvent, useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
@@ -7,18 +7,19 @@ import { Products } from '../../types/Product';
 import { useStateContext } from '../../context/StateContext';
 
 export const SearchInput: FC = () => {
-  const {state:{query}, dispatch} = useStateContext()
+  const { state: { query }, dispatch } = useStateContext()
   const [isFetching, setIsFetching] = useState<boolean>(false)
-  const [queries, setQueries] = useState<string>('')
   const navigate = useNavigate();
   const formRef = useRef<HTMLInputElement>(null);
 
-  const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
-    return dispatch({type: 'SET-QUERY', payload:{
-      query: e.target.value
-    }})
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    return dispatch({
+      type: 'SET-QUERY', payload: {
+        query: e.target.value
+      }
+    })
   }
-  const getProductByQuery = async (e: FormEvent<HTMLFormElement>):Promise<void> => {
+  const getProductByQuery = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       setIsFetching(true)

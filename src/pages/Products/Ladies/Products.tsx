@@ -1,6 +1,5 @@
-import { FC, useEffect, useState } from 'react';
-import { Products } from '../../../types/Product';
-import Card from '../../../components/Card/Card';
+import { FC, useState } from 'react';
+import Card from '../../../components/Card';
 import { Filter } from '../../../components/Filter/Filter';
 import { useStateContext } from '../../../context/StateContext';
 import { motion } from 'framer-motion';

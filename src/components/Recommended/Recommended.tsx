@@ -1,18 +1,26 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Products } from '../../types/Product';
 import { Carousel } from 'react-responsive-carousel';
-import Card from '../Card/Card';
+import Card from '../Card';
 
 interface Props {
   products: Products[];
 }
 
-export const Recommended: FC<Props> = ({products}) => {
+export const Recommended: FC<Props> = ({ products }) => {
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
 
-  window.addEventListener('resize', () => {
-    setWindowWidth(window.innerWidth);
-  });
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setWindowWidth(window.innerWidth);
+    });
+    return () => {
+      window.removeEventListener('resize', () => {
+        setWindowWidth(window.innerWidth);
+      });
+    }
+  }, [])
+
 
   return (
     <section className='max-w-4xl mx-auto h-full mt-5'>

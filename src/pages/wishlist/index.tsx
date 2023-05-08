@@ -3,7 +3,7 @@ import { Products } from '../../types/Product';
 import WishListHeader from './WishListHeader';
 import Empty from './Empty';
 import Detail from './Detail';
-import { FC } from 'react';
+import type { FC } from 'react';
 
 const Wishlist:FC = () => {
   const { state: { wishLists } } = useStateContext();

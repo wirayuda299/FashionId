@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import img from '../../../assets/images/emptyCart.jpg';
-import { FC } from 'react';
+import type { FC } from 'react';
 
 export const EmptyCart: FC = () => {
   return (

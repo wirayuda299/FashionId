@@ -5,7 +5,7 @@ import { urlFor } from '../../../config/client';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Products } from '../../types/Product';
-import Card from '../Card/Card'
+import Card from '../Card'
 
 export const TopSelling: FC = () => {
   const { data, isLoading, isError } = useGetTopSellByGender();

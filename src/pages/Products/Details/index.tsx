@@ -21,7 +21,6 @@ const Detail: FC = () => {
   const [, setClicked] = useState<boolean>(false);
   const [selected, setSelected] = useState<string>('')
   const { state: { cartItems, selectedSize }, dispatch } = useStateContext();
-  console.log(selectedSize);
 
   const { data, isError, isLoading } = useQuery(['product detail', id], async () => {
     const response = await client.fetch('*[_type == "product"]') as Products[];

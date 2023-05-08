@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { type FC, useState } from 'react';
 import { Outlet } from 'react-router';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
 import { withPage } from '../../hoc/withPage';

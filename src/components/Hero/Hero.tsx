@@ -3,30 +3,12 @@ import { FC } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { motion } from 'framer-motion';
-import hero1 from '../../assets/images/hero1.jpg';
-import hero2 from '../../assets/images/hero2.jpg';
+import { images } from '../../data/carouselData';
 
-interface Images {
-  id: number;
-  title: string;
-  text: string;
-  image: string;
-}
+
+
 export const Hero: FC = () => {
-  const images: Images[] = [
-    {
-      id: 1,
-      title: 'Discover Your Next Favorite Thing',
-      text: "Welcome to our online marketplace! Browse through our wide selection of products and find everything you need and more. From clothing and accessories and gifts, we've got it all. Start your shopping journey with us today",
-      image: hero1
-    },
-    {
-      id: 2,
-      title: 'Find Your Perfect Match',
-      text: 'Looking for the perfect gift or something for yourself? Look no further! Our online store has a wide variety of products to choose from, including clothing, sneakers, and more. Shop with us and find something special.',
-      image: hero2
-    }
-  ];
+
   return (
     <Carousel
       autoPlay
@@ -38,7 +20,7 @@ export const Hero: FC = () => {
       showIndicators={false}
       showStatus={false}
       showArrows={false}>
-      {images.map((image: Images) => (
+      {images.map((image) => (
         <motion.div
           initial={{ opacity: 0, filter: 'blur(5px)' }}
           whileInView={{ opacity: 1, filter: 'blur(0)' }}

@@ -1,5 +1,5 @@
 
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { useStateContext } from '../context/StateContext';
 import { useEffect } from 'react';
 import { toast } from 'react-hot-toast';

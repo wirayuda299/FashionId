@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import { urlFor } from '../../../config/client'
 import { BsTrash } from 'react-icons/bs'
 import { Link } from 'react-router-dom'

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { FC, useState } from 'react';
-import Card from '../../components/Card/Card';
+import Card from '../../components/Card';
 import { Filter } from '../../components/Filter/Filter';
 import { useLocation } from 'react-router-dom';
 import { Products } from '../../types/Product';

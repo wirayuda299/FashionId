@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import { StateContextProvider } from './context/StateContext';
 import { AnimatedRoutes } from './Routes/Routes';
-import { FC } from 'react';
+import type { FC } from 'react';
 
 const App: FC = () => {
   return (

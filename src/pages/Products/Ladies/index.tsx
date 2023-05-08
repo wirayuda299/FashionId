@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import heroLg from '../../../assets/images/heroLG.jpg';
 import { Link } from 'react-router-dom';
-import Card from '../../../components/Card/Card';
+import Card from '../../../components/Card';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { motion } from 'framer-motion';

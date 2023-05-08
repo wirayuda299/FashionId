@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FC } from 'react';
 import { Navbar } from '../Navbar/Navbar';
-import { Buttons } from './Buttons/Buttons';
+import { Buttons } from './Buttons';
 
 export const Header: FC = () => {
   return (

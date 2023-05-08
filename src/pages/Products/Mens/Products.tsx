@@ -1,7 +1,6 @@
 import { FC, useState } from 'react';
-import { Products } from '../../../types/Product';
 import { Filter } from '../../../components/Filter/Filter';
-import Card from '../../../components/Card/Card';
+import Card from '../../../components/Card';
 import { useStateContext } from '../../../context/StateContext';
 import { motion } from 'framer-motion';
 import { useFetchProducts } from '../../../hooks/useFetchProduct';

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import emptyWishList from '../../assets/images/wishlist.jpg';
 
 const Empty:FC = () => {

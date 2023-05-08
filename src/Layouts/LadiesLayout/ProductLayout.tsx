@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
-import { FC, useState } from 'react';
+import {type  FC, useState } from 'react';
 import { withPage } from '../../hoc/withPage';
 
 const SidebarWithPage = withPage(Sidebar);

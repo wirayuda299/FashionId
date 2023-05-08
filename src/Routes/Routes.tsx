@@ -9,7 +9,7 @@ import MensProductLayout from '../Layouts/MenLayout/MensProductLayout';
 import CatalogSearchLayout from '../Layouts/CatalogSearch/CatalogSearchLayout';
 
 import { Header } from '../components/Header/Header';
-import { Footer } from '../components/Footer/Footer';
+import { Footer } from '../components/Footer';
 
 // protected
 import { ProtectedHomePage } from '../Protected/ProtectedHomePage';

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { AiFillCreditCard, AiOutlineStar } from 'react-icons/ai';
 import { IoPaperPlaneOutline } from 'react-icons/io5';
 

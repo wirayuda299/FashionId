@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { useStateContext } from '../../../context/StateContext';
 import { Products } from '../../../types/Product';
 import { toast } from 'react-hot-toast';
@@ -56,7 +56,12 @@ export const CheckOut: FC<Props> = ({ total, cartItems }) => {
               </p>
             </div>
           ))}
-          <button className='w-full h-14 bg-black text-white mt-4 rounded-lg' onClick={handleCheckOut}>
+          <button
+            name='checkout'
+            title='checkout'
+            type='button'
+            className='w-full h-14 bg-black text-white mt-4 rounded-lg'
+            onClick={handleCheckOut}>
             checkout
           </button>
         </div>

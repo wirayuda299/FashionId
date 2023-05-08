@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { Link } from 'react-router-dom';
 import hero from '../../../assets/images/heroMen1.jpg';
-import Card from '../../../components/Card/Card';
+import Card from '../../../components/Card';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useGetTopSellByGender } from '../../../hooks/useGetTopSell';
 

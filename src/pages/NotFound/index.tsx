@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 import errorImg1 from '../../assets/images/404md.png';
 import errorImg2 from '../../assets/images/404sm.png';

@@ -32,7 +32,7 @@ export const ProductCartDetail: FC<Props> = ({ item }) => {
   const removeItem = (product: Products) => {
     const confirmDeleteItem = confirm(`Are you sure want to delete ${product.title} from your cart?`)
     if (confirmDeleteItem) {
-       dispatch({
+      dispatch({
         type: 'REMOVE-FROM-CART',
         payload: {
           _id: product._id
@@ -48,7 +48,8 @@ export const ProductCartDetail: FC<Props> = ({ item }) => {
     }
 
     dispatch({ type: 'ADD-TO-WISHLIST', payload: { product } });
-    toast.success('This item successfully added to wishlist');};
+    toast.success('This item successfully added to wishlist');
+  };
   const deleteWishListItem = (product: Products) => {
     dispatch({
       type: 'REMOVE-FROM-WISHLIST', payload: { product }
