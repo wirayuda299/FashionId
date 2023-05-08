@@ -1,5 +1,5 @@
-import hero1 from '../../assets/images/hero1.jpg';
-import hero2 from '../../assets/images/hero2.jpg';
+import hero1 from '../assets/images/hero1.jpg';
+import hero2 from '../assets/images/hero2.jpg';
 interface Images {
   id: number;
   title: string;
