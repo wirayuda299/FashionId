@@ -1,12 +1,12 @@
 import { signOut } from 'firebase/auth';
-import { auth } from '../../config/firebase';
-import type { SetStateAction } from 'react';
+import { auth } from '../config/firebase';
+import type { Dispatch, SetStateAction } from 'react';
 import type { NavigateFunction } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 type Args = {
-	setProcessing: React.Dispatch<SetStateAction<boolean>>;
-	setClicked: React.Dispatch<SetStateAction<boolean>>;
+	setProcessing: Dispatch<SetStateAction<boolean>>;
+	setClicked: Dispatch<SetStateAction<boolean>>;
 	navigate: NavigateFunction;
 };
 
