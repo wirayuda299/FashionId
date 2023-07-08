@@ -1,5 +1,4 @@
-
-export interface FormInput {
-  email: string;
-  password: string;
+interface FormInput {
+	email: string;
+	password: string;
 }
